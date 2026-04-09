@@ -5,6 +5,10 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
+use App\Models\Bill;
+use App\Models\Contract;
+use App\Models\Payment;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,11 +16,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Contract::factory()
+            ->count(5)
+            ->create()
+            ->each(function (Contract $contract) {
+                Bill::factory()
+                    ->for($contract)
+                    ->count(3)
+                    ->create()
+                    ->each(function (Bill $bill) {
+                        Payment::factory()
+                            ->for($bill)
+                            ->count(2)
+                            ->create();
+                    });
+            });
     }
 }
