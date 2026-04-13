@@ -72,7 +72,10 @@
                                         user</a>
                                 <form method="POST" action="{{ route('admin.users.status', $user) }}" class="inline">
                                         @csrf
+<<<<<<< HEAD
                                         @method('PATCH')
+=======
+>>>>>>> afaf
                                         <button type="submit"
                                                 class="bg-slate-900 text-white px-5 py-3 rounded-xl font-semibold hover:bg-slate-700 transition">{{ $user->status === 'Suspended' ? 'Activate' : 'Suspend' }}</button>
                                 </form>

@@ -44,20 +44,36 @@
                                         <label class="block text-sm font-semibold text-slate-700 mb-2">Name</label>
                                         <input name="name" value="{{ old('name') }}"
                                                 class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" />
+<<<<<<< HEAD
                                         @error('name') <p class="mt-2 text-sm text-red-600">{{ $message }}</p> @enderror
+=======
+                                        @error('name')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                        @enderror
+>>>>>>> afaf
                                 </div>
                                 <div>
                                         <label class="block text-sm font-semibold text-slate-700 mb-2">Email</label>
                                         <input name="email" type="email" value="{{ old('email') }}"
                                                 class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" />
+<<<<<<< HEAD
                                         @error('email') <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+=======
+                                        @error('email')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+>>>>>>> afaf
                                         @enderror
                                 </div>
                                 <div>
                                         <label class="block text-sm font-semibold text-slate-700 mb-2">Password</label>
                                         <input name="password" type="password"
                                                 class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm" />
+<<<<<<< HEAD
                                         @error('password') <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+=======
+                                        @error('password')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+>>>>>>> afaf
                                         @enderror
                                 </div>
                                 <div>
@@ -65,11 +81,20 @@
                                                 Status</label>
                                         <select name="status"
                                                 class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm">
+<<<<<<< HEAD
                                                 @foreach($statuses as $status)
                                                         <option value="{{ $status }}" {{ old('status') === $status ? 'selected' : '' }}>{{ $status }}</option>
                                                 @endforeach
                                         </select>
                                         @error('status') <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+=======
+                                                @foreach ($statuses as $status)
+                                                        <option value="{{ $status }}" {{ old('status') === $status ? 'selected' : '' }}>{{ $status }}</option>
+                                                @endforeach
+                                        </select>
+                                        @error('status')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+>>>>>>> afaf
                                         @enderror
                                 </div>
                                 <div class="flex flex-wrap gap-3">
