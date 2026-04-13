@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Bill;
 use App\Models\Contract;
 use App\Models\Payment;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +17,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        User::factory()->count(12)->create();
+
         Contract::factory()
             ->count(5)
             ->create()
