@@ -8,37 +8,26 @@ class ContractController extends Controller
 {
     public function index()
     {
-        // Données mock
-        $contracts = [
-            [
-                'id' => 1,
-                'name' => 'Fourniture Électricité',
-                'type' => 'electricite',
-                'status' => 'Actif',
-                'address' => '42 Avenue des Champs-Élysées, 75008 Paris',
-                'amount' => 84.50,
-                'consumption' => '1120 kWh',
-            ],
-            [
-                'id' => 2,
-                'name' => 'Abonnement Eau',
-                'type' => 'eau',
-                'status' => 'Optimal',
-                'address' => '12 Rue de Paris, Bâtiment B, Nantes',
-                'amount' => 32.10,
-                'consumption' => '15 m³',
-            ],
-            [
-                'id' => 3,
-                'name' => 'Fibre Optique',
-                'type' => 'fibre',
-                'status' => 'Vérification',
-                'address' => '21 Avenue des Champs-Élysées, Paris',
-                'amount' => 29.99,
-                'consumption' => null,
-            ],
-        ];
+        // جلب العقود مع آخر فاتورة
+        $contracts = \App\Models\Contract::with(['bills' => function($q) {
+            $q->latest('due_date');
+        }])->get();
 
-        return view('contracts.index', compact('contracts'));
+        // تجهيز البيانات للتصميم
+        $contracts = $contracts->map(function($contract) {
+            $lastBill = $contract->bills->first();
+            return [
+                'id' => $contract->contract_number,
+                'name' => $contract->title,
+                'type' => 'electricite', // يمكنك التغيير حسب قاعدة البيانات
+                'status' => ucfirst($contract->status),
+                'address' => 'Adresse non renseignée', // أضف عمود address إذا كان متوفر
+                'amount' => $lastBill ? $lastBill->amount : $contract->total_amount,
+                'consumption' => null, // أضف استهلاك إذا كان متوفر
+                'last_invoice_date' => $lastBill ? $lastBill->due_date : null,
+            ];
+        });
+
+        return view('contracts.index', ['contracts' => $contracts]);
     }
 }
