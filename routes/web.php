@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContractController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -20,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcom');
 });
+
+Route::get('/contracts', [ContractController::class, 'index'])->name('contracts.index');
 
 
 Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users.index');
