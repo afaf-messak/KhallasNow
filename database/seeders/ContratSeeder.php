@@ -1,9 +1,9 @@
 <?php
-// database/seeders/ContratSeeder.php
 
 namespace Database\Seeders;
 
 use App\Models\Contrat;
+use App\Models\Facture;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -60,5 +60,47 @@ class ContratSeeder extends Seeder
             'code_postal' => '75008',
         ]);
         $fibre->users()->attach($user->id, ['role' => 'proprietaire']);
+
+        // ========== FACTURES ==========
+
+        // Facture électricité EN RETARD
+        Facture::create([
+            'contrat_id' => $elec->id,
+            'numero_facture' => '88291-EA',
+            'montant' => 142.50,
+            'date_emission' => now()->subDays(30),
+            'date_echeance' => now()->subDays(14),
+            'statut' => 'en_retard',
+        ]);
+
+        // Facture eau EN ATTENTE
+        Facture::create([
+            'contrat_id' => $eau->id,
+            'numero_facture' => 'W-2023-09',
+            'montant' => 38.12,
+            'date_emission' => now()->subDays(45),
+            'date_echeance' => now()->subDays(15),
+            'statut' => 'en_attente',
+        ]);
+
+        // Facture fibre PAYÉE
+        Facture::create([
+            'contrat_id' => $fibre->id,
+            'numero_facture' => 'F-2023-10',
+            'montant' => 29.99,
+            'date_emission' => now()->subDays(60),
+            'date_echeance' => now()->subDays(30),
+            'statut' => 'payee',
+        ]);
+
+        // Facture électricité bureau EN ATTENTE
+        Facture::create([
+            'contrat_id' => $elec->id,
+            'numero_facture' => '99201-EB',
+            'montant' => 84.00,
+            'date_emission' => now()->subDays(20),
+            'date_echeance' => now()->subDays(5),
+            'statut' => 'en_attente',
+        ]);
     }
 }
