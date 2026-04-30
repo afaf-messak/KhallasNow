@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // ==================== HOME ====================
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcom');
 })->name('home');
 
 // ==================== CLIENT AUTH ====================
