@@ -1,7 +1,7 @@
 {{-- resources/views/paiements/index.blade.php --}}
 @extends('layouts.app')
 
-@section('title', 'Historique des paiements - FatoraPay')
+@section('title', 'Historique des paiements - KhallasNow')
 
 @section('content')
 <div class="max-w-lg mx-auto px-4 pb-28 md:max-w-2xl">
@@ -10,7 +10,7 @@
     <header class="flex justify-between items-center py-4 mb-6">
         <div class="flex items-center gap-2">
             <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">F</div>
-            <span class="text-xl font-bold text-primary-600">FatoraPay</span>
+            <span class="text-xl font-bold text-primary-600">KhallasNow</span>
         </div>
         <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-slate-200">
             <img src="{{ Auth::user()->avatar ?? 'https://ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&background=2563EB&color=fff' }}" 
