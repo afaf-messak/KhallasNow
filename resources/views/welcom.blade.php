@@ -1,244 +1,230 @@
 <!DOCTYPE html>
-
-<html class="light" lang="fr">
+<html lang="fr">
 
 <head>
         <meta charset="utf-8" />
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <title>Bienvenue sur FatoraPay</title>
+        <title>KhallasNow - Gestion de factures</title>
         <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap"
                 rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
                 rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-                rel="stylesheet" />
-        <script id="tailwind-config">
+        <script>
                 tailwind.config = {
-                        darkMode: "class",
                         theme: {
                                 extend: {
                                         colors: {
-                                                "on-error-container": "#93000a",
-                                                "surface-container-lowest": "#ffffff",
-                                                "surface-dim": "#d8dadc",
-                                                "on-secondary": "#ffffff",
-                                                "error-container": "#ffdad6",
-                                                "error": "#ba1a1a",
-                                                "on-secondary-fixed": "#00201c",
-                                                "primary-fixed": "#dae2ff",
-                                                "surface-container-low": "#f2f4f6",
-                                                "on-tertiary-fixed-variant": "#005312",
-                                                "on-tertiary": "#ffffff",
-                                                "inverse-primary": "#b2c5ff",
-                                                "tertiary": "#004f11",
-                                                "tertiary-fixed-dim": "#88d982",
-                                                "on-tertiary-fixed": "#002204",
-                                                "inverse-on-surface": "#eff1f3",
-                                                "primary-container": "#0052cc",
-                                                "on-background": "#191c1e",
-                                                "secondary-fixed-dim": "#83d5c6",
-                                                "on-primary-container": "#c4d2ff",
-                                                "secondary-fixed": "#9ff2e2",
-                                                "on-surface": "#191c1e",
-                                                "surface-variant": "#e0e3e5",
-                                                "surface-tint": "#0c56d0",
-                                                "background": "#f7f9fb",
-                                                "surface-container-high": "#e6e8ea",
-                                                "surface-bright": "#f7f9fb",
-                                                "secondary": "#006b5f",
-                                                "surface-container-highest": "#e0e3e5",
-                                                "surface-container": "#eceef0",
-                                                "surface": "#f7f9fb",
-                                                "outline-variant": "#c3c6d6",
-                                                "on-secondary-fixed-variant": "#005047",
-                                                "outline": "#737685",
-                                                "on-primary": "#ffffff",
-                                                "on-surface-variant": "#434654",
-                                                "primary": "#003d9b",
-                                                "on-primary-fixed": "#001848",
-                                                "secondary-container": "#9cefdf",
-                                                "tertiary-container": "#166921",
-                                                "tertiary-fixed": "#a3f69c",
-                                                "primary-fixed-dim": "#b2c5ff",
-                                                "on-error": "#ffffff",
-                                                "on-secondary-container": "#0b6f63",
-                                                "on-primary-fixed-variant": "#0040a2",
-                                                "inverse-surface": "#2d3133",
-                                                "on-tertiary-container": "#94e68e"
+                                                primary: '#004aad',
+                                                ink: '#172033',
+                                                muted: '#667085',
+                                                soft: '#f5f8fc',
+                                                mint: '#0f9f8f'
                                         },
                                         fontFamily: {
-                                                "headline": ["Manrope"],
-                                                "body": ["Inter"],
-                                                "label": ["Inter"]
+                                                body: ['Inter', 'sans-serif'],
+                                                headline: ['Manrope', 'sans-serif']
                                         },
-                                        borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
-                                },
-                        },
+                                        boxShadow: {
+                                                soft: '0 18px 50px rgba(15, 38, 71, 0.10)'
+                                        }
+                                }
+                        }
                 }
         </script>
         <style>
-                .material-symbols-outlined {
-                        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+                body {
+                        font-family: 'Inter', sans-serif;
                 }
 
-                .glass-effect {
-                        backdrop-filter: blur(12px);
-                        background: rgba(255, 255, 255, 0.7);
+                h1,
+                h2,
+                h3,
+                .font-headline {
+                        font-family: 'Manrope', sans-serif;
                 }
-        </style>
-        <style>
-                body {
-                        min-height: max(884px, 100dvh);
+
+                .material-symbols-outlined {
+                        font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+                        vertical-align: middle;
                 }
         </style>
 </head>
 
-<body
-        class="bg-background font-body text-on-surface min-h-screen flex flex-col items-center justify-center p-6 md:p-12 selection:bg-primary-container selection:text-white">
-        <!-- Navbar -->
-        <header class="fixed top-0 w-full z-50">
-                <nav class="glass-effect bg-white/60 backdrop-blur-sm border-b border-surface-container-lowest/30">
-                        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-                                <div class="flex items-center space-x-3 pointer-events-auto">
-                                        <div
-                                                class="w-10 h-10 bg-primary flex items-center justify-center rounded-xl shadow-md">
-                                                <span
-                                                        class="material-symbols-outlined text-white text-2xl">account_balance_wallet</span>
-                                        </div>
-                                        <a href="#" class="font-headline text-xl text-primary font-black">KhallasNow</a>
-                                </div>
-                                <div class="hidden md:flex items-center space-x-6">
-                                        <a href="#" class="text-on-surface hover:text-primary font-medium">Accueil</a>
-                                        <a href="#"
-                                                class="text-on-surface hover:text-primary font-medium">Fonctionnalités</a>
-                                        <a href="#" class="text-on-surface hover:text-primary font-medium">Tarifs</a>
-                                        <a href="#" class="text-on-surface hover:text-primary font-medium">Contact</a>
-                                        <a href="#"
-                                                class="ml-4 px-4 py-2 bg-primary text-white rounded-lg font-bold">Connexion</a>
-                                </div>
-                                <button id="nav-toggle" aria-label="Open menu"
-                                        class="md:hidden p-2 rounded-md bg-surface-container pointer-events-auto">
-                                        <span class="material-symbols-outlined">menu</span>
-                                </button>
+<body class="min-h-screen overflow-x-hidden bg-soft text-ink">
+        <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/90 backdrop-blur">
+                <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+                        <a href="{{ url('/') }}" class="flex items-center gap-3">
+                                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white shadow-lg shadow-primary/25">
+                                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+                                </span>
+                                <span class="font-headline text-xl font-extrabold tracking-tight text-primary">KhallasNow</span>
+                        </a>
+
+                        <div class="hidden items-center gap-7 text-sm font-semibold text-slate-700 md:flex">
+                                <a href="#accueil" class="hover:text-primary">Accueil</a>
+                                <a href="#fonctionnalites" class="hover:text-primary">Fonctionnalites</a>
+                                <a href="#tarifs" class="hover:text-primary">Tarifs</a>
+                                <a href="#contact" class="hover:text-primary">Contact</a>
+                                <a href="{{ route('client.login') }}"
+                                        class="rounded-lg bg-primary px-5 py-2.5 font-bold text-white shadow-lg shadow-primary/20 transition hover:bg-blue-700">
+                                        Connexion
+                                </a>
                         </div>
-                        <div id="mobile-menu" class="md:hidden hidden border-t border-surface-container-lowest/20">
-                                <div class="px-6 py-4 flex flex-col space-y-2">
-                                        <a href="#" class="py-2 text-on-surface font-medium">Accueil</a>
-                                        <a href="#" class="py-2 text-on-surface font-medium">Fonctionnalités</a>
-                                        <a href="#" class="py-2 text-on-surface font-medium">Tarifs</a>
-                                        <a href="#" class="py-2 text-on-surface font-medium">Contact</a>
-                                        <a href="#"
-                                                class="py-2 px-4 bg-primary text-white rounded-lg font-bold w-max">Connexion</a>
-                                </div>
-                        </div>
-                </nav>
-        </header>
-        <main class="w-full max-w-5xl mt-20">
-                <!-- Hero Section -->
-                <div class="text-center mb-16 max-w-2xl mx-auto">
-                        <h2
-                                class="font-headline text-4xl md:text-5xl font-extrabold text-on-background mb-4 leading-tight">
-                                Gérez vos factures en toute sérénité.
-                        </h2>
-                        <p class="text-on-surface-variant text-lg md:text-xl font-medium opacity-80">
-                                Bienvenue sur votre portail financier. Veuillez sélectionner votre profil pour
-                                commencer.
-                        </p>
-                </div>
-                <!-- Asymmetric Role Selection Grid -->
-                <div class="grid md:grid-cols-2 gap-8 items-stretch">
-                        <!-- User Space Card -->
-                        <button
-                                class="group relative flex flex-col items-start p-8 md:p-12 bg-surface-container-lowest rounded-[2.5rem] text-left transition-all duration-300 hover:scale-[1.02] hover:bg-white active:scale-95 overflow-hidden">
-                                <div
-                                        class="absolute top-0 right-0 w-48 h-48 bg-primary-container/10 rounded-bl-full -mr-12 -mt-12 transition-transform group-hover:scale-110">
-                                </div>
-                                <div
-                                        class="relative z-10 w-16 h-16 rounded-2xl bg-primary-container flex items-center justify-center mb-10 shadow-inner">
-                                        <span class="material-symbols-outlined text-on-primary-container text-4xl"
-                                                data-icon="person">person</span>
-                                </div>
-                                <div class="relative z-10">
-                                        <h3 class="font-headline text-3xl font-bold text-on-background mb-3">Espace
-                                                Utilisateur</h3>
-                                        <p class="text-on-surface-variant font-medium leading-relaxed mb-8 max-w-xs">
-                                                Consultez vos factures, effectuez des paiements et gérez votre
-                                                historique personnel.
-                                        </p>
-                                        <div class="flex items-center space-x-2 text-primary font-bold">
-                                                <span>Se connecter</span>
-                                                <span class="material-symbols-outlined transition-transform group-hover:translate-x-2"
-                                                        data-icon="arrow_forward">arrow_forward</span>
-                                        </div>
-                                </div>
+
+                        <button id="menuBtn" class="rounded-lg border border-slate-200 bg-white p-2 text-slate-700 md:hidden" aria-label="Menu">
+                                <span class="material-symbols-outlined">menu</span>
                         </button>
-                        @auth
-                                @if (auth()->user()->is_admin)
-                                        <!-- Admin Space Card -->
-                                        <button
-                                                class="group relative flex flex-col items-start p-8 md:p-12 bg-surface-container rounded-[2.5rem] text-left transition-all duration-300 hover:scale-[1.02] hover:bg-surface-container-high active:scale-95 overflow-hidden border border-transparent hover:border-outline-variant/30">
-                                                <div
-                                                        class="absolute bottom-0 right-0 w-64 h-64 bg-secondary-container/20 rounded-tl-full -mr-20 -mb-20 transition-transform group-hover:scale-110">
+                </nav>
+                <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white px-5 py-4 md:hidden">
+                        <div class="mx-auto flex max-w-6xl flex-col gap-3 text-sm font-semibold text-slate-700">
+                                <a href="#accueil">Accueil</a>
+                                <a href="#fonctionnalites">Fonctionnalites</a>
+                                <a href="#tarifs">Tarifs</a>
+                                <a href="#contact">Contact</a>
+                                <a href="{{ route('client.login') }}" class="w-max rounded-lg bg-primary px-5 py-2.5 font-bold text-white">Connexion</a>
+                        </div>
+                </div>
+        </header>
+
+        <main id="accueil">
+                <section class="relative mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-[1.05fr_0.95fr] md:py-24">
+                        <div class="relative z-10">
+                                <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider text-primary shadow-sm">
+                                        <span class="h-2 w-2 rounded-full bg-mint"></span>
+                                        Portail financier simple et securise
+                                </p>
+                                <h1 class="font-headline text-4xl font-extrabold leading-tight tracking-tight text-ink md:text-6xl">
+                                        Gérez vos factures en toute sérénité.
+                                </h1>
+                                <p class="mt-5 max-w-xl text-lg font-medium leading-8 text-muted">
+                                        Centralisez vos factures, suivez les paiements et gardez une vision claire sur votre activité depuis un seul espace.
+                                </p>
+                                <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+                                        <a href="{{ route('client.login') }}"
+                                                class="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-bold text-white shadow-lg shadow-primary/25 transition hover:bg-blue-700">
+                                                Commencer
+                                                <span class="material-symbols-outlined text-lg">arrow_forward</span>
+                                        </a>
+                                        <a href="#fonctionnalites"
+                                                class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-bold text-slate-700 transition hover:border-primary hover:text-primary">
+                                                Voir les services
+                                        </a>
+                                </div>
+                        </div>
+
+                        <div class="relative">
+                                <div class="absolute -right-8 -top-10 h-44 w-44 rounded-full bg-blue-100"></div>
+                                <div class="absolute -bottom-8 -left-8 h-36 w-36 rounded-full bg-emerald-100"></div>
+                                <div class="relative overflow-hidden rounded-[2rem] border border-white bg-white p-6 shadow-soft">
+                                        <div class="mb-6 flex items-center justify-between">
+                                                <div>
+                                                        <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Apercu mensuel</p>
+                                                        <h2 class="mt-1 text-2xl font-extrabold text-ink">Aperçu financier</h2>
                                                 </div>
-                                                <div
-                                                        class="relative z-10 w-16 h-16 rounded-2xl bg-on-background flex items-center justify-center mb-10 shadow-lg">
-                                                        <span class="material-symbols-outlined text-surface-container-lowest text-4xl"
-                                                                data-icon="admin_panel_settings">admin_panel_settings</span>
+                                                <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-mint">Live</span>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-3">
+                                                <div class="rounded-2xl bg-slate-50 p-4">
+                                                        <span class="material-symbols-outlined text-primary">receipt_long</span>
+                                                        <p class="mt-5 text-2xl font-extrabold">128</p>
+                                                        <p class="text-xs font-semibold text-muted">Factures</p>
                                                 </div>
-                                                <div class="relative z-10">
-                                                        <h3 class="font-headline text-3xl font-bold text-on-background mb-3">Espace
-                                                                Administrateur</h3>
-                                                        <p class="text-on-surface-variant font-medium leading-relaxed mb-8 max-w-xs">
-                                                                Accédez au tableau de bord, gérez les utilisateurs et supervisez l'audit
-                                                                des factures.
-                                                        </p>
-                                                        <div class="flex items-center space-x-2 text-on-background font-bold">
-                                                                <span>Gestion système</span>
-                                                                <span class="material-symbols-outlined transition-transform group-hover:translate-x-2"
-                                                                        data-icon="chevron_right">chevron_right</span>
+                                                <div class="rounded-2xl bg-primary p-4 text-white">
+                                                        <span class="material-symbols-outlined">payments</span>
+                                                        <p class="mt-5 text-2xl font-extrabold">92%</p>
+                                                        <p class="text-xs font-semibold text-blue-100">Payees</p>
+                                                </div>
+                                                <div class="col-span-2 rounded-2xl bg-slate-50 p-4">
+                                                        <div class="mb-3 flex items-center justify-between text-xs font-bold text-muted">
+                                                                <span>Flux des paiements</span>
+                                                                <span>+18%</span>
+                                                        </div>
+                                                        <div class="flex h-20 items-end gap-2">
+                                                                <span class="flex-1 rounded-t-lg bg-blue-200" style="height: 45%"></span>
+                                                                <span class="flex-1 rounded-t-lg bg-blue-300" style="height: 62%"></span>
+                                                                <span class="flex-1 rounded-t-lg bg-primary" style="height: 85%"></span>
+                                                                <span class="flex-1 rounded-t-lg bg-emerald-300" style="height: 58%"></span>
+                                                                <span class="flex-1 rounded-t-lg bg-primary" style="height: 72%"></span>
                                                         </div>
                                                 </div>
-                                        </button>
-                                @endif
-                        @endauth
-                </div>
-                <!-- Secondary Information / Trust Bar -->
-                <div class="mt-20 flex flex-wrap justify-center gap-x-12 gap-y-8 opacity-60">
-                        <div class="flex items-center space-x-2">
-                                <span class="material-symbols-outlined text-sm"
-                                        data-icon="verified_user">verified_user</span>
-                                <span class="text-xs font-bold tracking-widest uppercase">Sécurisé par TLS 1.3</span>
+                                        </div>
+                                </div>
                         </div>
-                        <div class="flex items-center space-x-2">
-                                <span class="material-symbols-outlined text-sm" data-icon="update">update</span>
-                                <span class="text-xs font-bold tracking-widest uppercase">Mise à jour temps réel</span>
+                </section>
+
+                <section id="fonctionnalites" class="border-y border-slate-200 bg-white">
+                        <div class="mx-auto max-w-6xl px-5 py-16">
+                                <div class="max-w-2xl">
+                                        <h2 class="text-3xl font-extrabold tracking-tight">Fonctionnalités essentielles</h2>
+                                        <p class="mt-3 font-medium leading-7 text-muted">Tout ce qu'il faut pour suivre vos factures sans complexité.</p>
+                                </div>
+                                <div class="mt-10 grid gap-5 md:grid-cols-3">
+                                        <div class="rounded-2xl border border-slate-100 bg-soft p-6">
+                                                <span class="material-symbols-outlined text-primary">verified_user</span>
+                                                <h3 class="mt-5 font-extrabold">Acces securise</h3>
+                                                <p class="mt-2 text-sm leading-6 text-muted">Un acces protege pour consulter vos informations et vos factures.</p>
+                                        </div>
+                                        <div class="rounded-2xl border border-slate-100 bg-soft p-6">
+                                                <span class="material-symbols-outlined text-primary">monitoring</span>
+                                                <h3 class="mt-5 font-extrabold">Suivi clair</h3>
+                                                <p class="mt-2 text-sm leading-6 text-muted">Visualisez les paiements, statuts et historiques en quelques clics.</p>
+                                        </div>
+                                        <div class="rounded-2xl border border-slate-100 bg-soft p-6">
+                                                <span class="material-symbols-outlined text-primary">download</span>
+                                                <h3 class="mt-5 font-extrabold">Documents disponibles</h3>
+                                                <p class="mt-2 text-sm leading-6 text-muted">Retrouvez facilement vos recus, factures et historiques de paiement.</p>
+                                        </div>
+                                </div>
                         </div>
-                        <div class="flex items-center space-x-2">
-                                <span class="material-symbols-outlined text-sm"
-                                        data-icon="support_agent">support_agent</span>
-                                <span class="text-xs font-bold tracking-widest uppercase">Support 24/7 disponible</span>
+                </section>
+
+                <section id="tarifs" class="mx-auto max-w-6xl px-5 py-16">
+                        <div class="rounded-[2rem] bg-primary p-8 text-white shadow-soft md:p-10">
+                                <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+                                        <div>
+                                                <p class="text-sm font-bold uppercase tracking-widest text-blue-100">Tarifs</p>
+                                                <h2 class="mt-2 text-3xl font-extrabold">Une solution flexible pour votre activité</h2>
+                                                <p class="mt-3 max-w-2xl leading-7 text-blue-100">Commencez avec les outils essentiels, puis adaptez votre usage selon le volume de factures et d'utilisateurs.</p>
+                                        </div>
+                                        <a href="#contact" class="inline-flex w-max items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-bold text-primary">
+                                                Demander une offre
+                                        </a>
+                                </div>
                         </div>
-                </div>
+                </section>
+
+                <section id="contact" class="mx-auto max-w-6xl px-5 pb-16">
+                        <div class="grid gap-6 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm md:grid-cols-[0.8fr_1.2fr]">
+                                <div>
+                                        <h2 class="text-3xl font-extrabold">Contact</h2>
+                                        <p class="mt-3 leading-7 text-muted">Besoin d'aide pour configurer votre espace KhallasNow ? Notre equipe vous accompagne.</p>
+                                </div>
+                                <div class="grid gap-3 sm:grid-cols-2">
+                                        <div class="rounded-2xl bg-soft p-5">
+                                                <span class="material-symbols-outlined text-primary">mail</span>
+                                                <p class="mt-3 text-sm font-bold">support@khallasnow.test</p>
+                                        </div>
+                                        <div class="rounded-2xl bg-soft p-5">
+                                                <span class="material-symbols-outlined text-primary">schedule</span>
+                                                <p class="mt-3 text-sm font-bold">Support disponible 24/7</p>
+                                        </div>
+                                </div>
+                        </div>
+                </section>
         </main>
-        <!-- Decorative Elements -->
-        <div class="fixed top-1/4 -left-32 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none"></div>
-        <div class="fixed bottom-1/4 -right-32 w-96 h-96 bg-secondary/5 rounded-full blur-[100px] pointer-events-none">
-        </div>
-        <!-- Footer -->
-        <footer class="mt-auto py-8 text-on-surface-variant/50 text-xs font-medium">
-                © 2024 FatoraPay Financial Services. Tous droits réservés.
+
+        <footer class="border-t border-slate-200 bg-white px-5 py-8">
+                <div class="mx-auto flex max-w-6xl flex-col gap-3 text-sm font-medium text-muted sm:flex-row sm:items-center sm:justify-between">
+                        <p>© 2026 KhallasNow. Tous droits réservés.</p>
+                        <p>Factures, paiements et suivi financier.</p>
+                </div>
         </footer>
 
         <script>
-                        (function () {
-                                const btn = document.getElementById('nav-toggle');
-                                const menu = document.getElementById('mobile-menu');
-                                if (!btn || !menu) return;
-                                btn.addEventListener('click', function () {
-                                        menu.classList.toggle('hidden');
-                                });
-                        })();
+                const btn = document.getElementById('menuBtn');
+                const menu = document.getElementById('mobileMenu');
+                btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
         </script>
 </body>
 

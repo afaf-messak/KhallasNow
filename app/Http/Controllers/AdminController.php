@@ -10,6 +10,33 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
+    public function showLoginForm()
+    {
+        if (Auth::guard('admin')->check()) {
+            return redirect()->route('admin.users.index');
+        }
+
+        return view('admin.auth.loginAdmin');
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string'],
+        ]);
+
+        if (!Auth::guard('admin')->attempt($credentials, $request->boolean('remember'))) {
+            return back()
+                ->withErrors(['email' => 'Identifiants administrateur incorrects.'])
+                ->onlyInput('email');
+        }
+
+        $request->session()->regenerate();
+
+        return redirect()->intended(route('admin.users.index'));
+    }
+
     public function users(Request $request)
     {
         $statuses = ['Active', 'Suspended', 'Pending Verification'];
@@ -250,9 +277,58 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    public function invoices()
+    public function invoices(Request $request)
     {
-        return view('admin.invoices');
+        $contracts = \App\Models\Contract::withCount('bills')
+            ->orderByDesc('created_at')
+            ->get();
+
+        $invoiceQuery = \App\Models\Bill::with('contract')->orderByDesc('created_at');
+
+        if ($request->query('status') === 'unpaid') {
+            $invoiceQuery->where('is_paid', false);
+        }
+
+        if ($search = $request->query('q')) {
+            $invoiceQuery->where(function ($query) use ($search) {
+                $query->where('invoice_number', 'like', "%{$search}%")
+                    ->orWhereHas('contract', function ($contractQuery) use ($search) {
+                        $contractQuery->where('contract_number', 'like', "%{$search}%")
+                            ->orWhere('title', 'like', "%{$search}%");
+                    });
+            });
+        }
+
+        $invoices = $invoiceQuery->paginate(8)->withQueryString();
+        $totalReceivables = \App\Models\Bill::where('is_paid', false)->sum('amount');
+        $paidInvoices = \App\Models\Bill::where('is_paid', true)->count();
+        $unpaidInvoices = \App\Models\Bill::where('is_paid', false)->count();
+
+        return view('admin.invoice.gestionFact', compact(
+            'contracts',
+            'invoices',
+            'totalReceivables',
+            'paidInvoices',
+            'unpaidInvoices'
+        ));
+    }
+
+    public function storeInvoice(Request $request)
+    {
+        $data = $request->validate([
+            'contract_id' => ['required', 'exists:contracts,id'],
+            'amount' => ['required', 'numeric', 'min:0'],
+            'due_date' => ['required', 'date'],
+            'status' => ['required', 'in:pending,paid,overdue'],
+        ]);
+
+        $data['invoice_number'] = 'INV-' . now()->format('YmdHis') . '-' . random_int(100, 999);
+        $data['is_paid'] = $data['status'] === 'paid';
+        $data['paid_at'] = $data['is_paid'] ? now() : null;
+
+        \App\Models\Bill::create($data);
+
+        return redirect()->route('admin.invoices.index')->with('success', 'Invoice created successfully.');
     }
 
     public function analytics()
@@ -265,9 +341,17 @@ class AdminController extends Controller
         return view('admin.help');
     }
 
-    public function logout()
+    public function settings()
     {
-        Auth::logout();
-        return redirect('/');
+        return redirect()->route('admin.users.index');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('admin.login');
     }
 }
